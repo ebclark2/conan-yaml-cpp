@@ -8,8 +8,8 @@ class YamlcppConan(ConanFile):
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Yamlcpp here>"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {"shared": [True, False], "fPIC": [True, False]}
+    default_options = "shared=False", "fPIC=False"
     generators = "cmake"
 
     def source(self):
@@ -18,7 +18,10 @@ class YamlcppConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        self.run('cmake yaml-cpp %s' % cmake.command_line)
+        CMAKE_OPTIONS = ""
+        if self.options.fPIC:
+            CMAKE_OPTIONS += "-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON"
+        self.run('cmake yaml-cpp %s %s' % (cmake.command_line, CMAKE_OPTIONS))
         self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):
