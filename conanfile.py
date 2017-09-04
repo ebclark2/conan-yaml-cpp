@@ -11,10 +11,7 @@ class YamlcppConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = "shared=False", "fPIC=False"
     generators = "cmake"
-    exports_sources = "yaml-cpp"
-
-    def source(self):
-        self.run("cd yaml-cpp")
+    exports_sources = "yaml-cpp/*"
 
     def build(self):
         cmake = CMake(self)

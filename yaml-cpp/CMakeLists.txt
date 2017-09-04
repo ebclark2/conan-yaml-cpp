@@ -18,6 +18,7 @@ if(POLICY CMP0042)
 	cmake_policy(SET CMP0042 NEW)
 endif()
 
+set (CMAKE_CXX_STANDARD 11)
 include(CheckCXXCompilerFlag)
 
 
