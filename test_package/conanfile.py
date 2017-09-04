@@ -1,20 +1,23 @@
 from conans import ConanFile, CMake
 import os
 
-class YamlcppTestConan(ConanFile):
-    settings = "os", "compiler", "build_type", "arch"
-    generators = "cmake"
+username = os.getenv( '"CONAN_USERNAME', 'ebclark2' )
+channel = os.getenv( 'CONAN_CHANNEL', 'testing' )
 
-    def build(self):
-        cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is in "test_package"
-        cmake.configure(source_dir=self.conanfile_directory, build_dir="./")
-        cmake.build()
+class YamlCppTestConan( ConanFile ):
+  settings = 'os', 'compiler', 'build_type', 'arch'
+  requires = 'yaml-cpp/master@%s/%s' %  (username, channel )
+  generators = 'cmake'
 
-    def imports(self):
-        self.copy("*.dll", dst="bin", src="bin")
-        self.copy("*.dylib*", dst="bin", src="lib")
+  def build( self ):
+    cmake = CMake( self.settings )
+    self.run( 'cmake "%s" %s' % ( self.conanfile_directory, cmake.command_line ) )
+    self.run( 'cmake --build . %s' % cmake.build_config )
 
-    def test(self):
-        os.chdir("bin")
-        self.run(".%sexample" % os.sep)
+  def imports( self ):
+    self.copy( '*.dll', 'bin', 'bin' )
+    self.copy( '*.dylib', 'bin', 'bin' )
+
+  def test( self ):
+    os.chdir( 'bin' )
+    self.run( '.%sexample' % os.sep )
