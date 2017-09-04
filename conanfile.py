@@ -21,7 +21,7 @@ class YamlcppConan(ConanFile):
         CMAKE_OPTIONS = ""
         if self.options.fPIC:
             CMAKE_OPTIONS += "-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON"
-        self.run('cmake yaml-cpp %s %s' % (cmake.command_line, CMAKE_OPTIONS))
+        self.run('cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON %s %s yaml-cpp' % (cmake.command_line, CMAKE_OPTIONS))
         self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):

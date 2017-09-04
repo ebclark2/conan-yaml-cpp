@@ -7,7 +7,6 @@ env:
      - CONAN_CHANNEL: "stable"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/edsidea/edsidea"
      - CONAN_REMOTES: "https://api.bintray.com/conan/edsidea/edsidea"
-     - VERBOSE: 1
      
 linux: &linux
    os: linux
