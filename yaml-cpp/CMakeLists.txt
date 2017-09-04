@@ -280,9 +280,9 @@ set(_INSTALL_DESTINATIONS
 ### Library
 ###
 add_library(yaml-cpp ${library_sources})
-set_target_properties(yaml-cpp PROPERTIES
-  COMPILE_FLAGS "${yaml_c_flags} ${yaml_cxx_flags}"
-)
+#set_target_properties(yaml-cpp PROPERTIES
+#  COMPILE_FLAGS "${yaml_c_flags} ${yaml_cxx_flags}"
+#)
 
 set_target_properties(yaml-cpp PROPERTIES
 	VERSION "${YAML_CPP_VERSION}"
