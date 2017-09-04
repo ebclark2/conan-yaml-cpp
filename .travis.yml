@@ -4,7 +4,7 @@ env:
      - CONAN_REFERENCE: "yaml-cpp/master"
      - CONAN_USERNAME: "ebclark2"
      - CONAN_LOGIN_USERNAME: "ebclark2"
-     - CONAN_CHANNEL: "testing"
+     - CONAN_CHANNEL: "stable"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/edsidea/edsidea"
      - CONAN_REMOTES: "https://api.bintray.com/conan/edsidea/edsidea"
      
