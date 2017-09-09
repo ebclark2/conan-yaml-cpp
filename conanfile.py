@@ -16,11 +16,10 @@ class YamlcppConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        CMAKE_OPTIONS = ""
         if self.options.fPIC:
-            CMAKE_OPTIONS += "-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON"
-        self.run('cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON %s %s yaml-cpp' % (cmake.command_line, CMAKE_OPTIONS))
-        self.run("cmake --build . %s" % cmake.build_config)
+            cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE:BOOL"] = "ON"
+        cmake.configure(source_dir=self.conanfile_directory + "/yaml-cpp")
+        cmake.build()
 
     def package(self):
         self.copy("*.h", dst="include", src="yaml-cpp/include")
