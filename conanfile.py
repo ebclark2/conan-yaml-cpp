@@ -27,6 +27,10 @@ class YamlcppConan(ConanFile):
         self.copy("*.so", dst="lib", keep_path=False)
         self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
+        self.copy("*.lib", dst="lib", src="Release", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["yaml-cpp"]
+        if self.settings.compiler != "Visual Studio":
+            self.cpp_info.libs = ["yaml-cpp"]
+        else:
+            self.cpp_info.libs = ["libyaml-cppmd"]
