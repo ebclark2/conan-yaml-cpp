@@ -20,20 +20,10 @@ class YamlcppConan(ConanFile):
             cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE:BOOL"] = "ON"
         cmake.configure(source_dir=self.source_folder + "/yaml-cpp")
         cmake.build()
-
-    def package(self):
-        self.copy("*.h", dst="include", src="yaml-cpp/include")
-        self.copy("*.dll", dst="bin", keep_path=False)
-        self.copy("*.so", dst="lib", keep_path=False)
-        self.copy("*.dylib", dst="lib", keep_path=False)
-        self.copy("*.a", dst="lib", keep_path=False)
-        self.copy("*.lib", dst="lib", src="Release", keep_path=False)
+        cmake.install();
 
     def package_info(self):
         if self.settings.compiler != "Visual Studio":
-            if self.options.shared:
-                self.cpp_info.libs = ["yaml-cpp"]
-            else:
-                self.cpp_info.libs = ["libyaml-cpp.a"]
+            self.cpp_info.libs = ["yaml-cpp"]
         else:
             self.cpp_info.libs = ["libyaml-cppmd"]
