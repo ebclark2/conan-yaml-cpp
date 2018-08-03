@@ -32,8 +32,8 @@ class YamlcppConan(ConanFile):
     def package_info(self):
         if self.settings.compiler != "Visual Studio":
             if self.options.shared:
-              self.cpp_info.libs = ["yaml-cpp"]
+                self.cpp_info.libs = ["yaml-cpp"]
             else:
-              self.cpp_info.libs = ["libyaml-cpp.a"]
+                self.cpp_info.libs = ["libyaml-cpp.a"]
         else:
             self.cpp_info.libs = ["libyaml-cppmd"]
