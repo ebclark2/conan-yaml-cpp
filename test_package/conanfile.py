@@ -20,5 +20,4 @@ class YamlCppTestConan( ConanFile ):
     self.copy( '*.dylib', 'bin', 'bin' )
 
   def test( self ):
-    os.chdir( 'bin' )
     self.run( '.%sexample' % os.sep )
