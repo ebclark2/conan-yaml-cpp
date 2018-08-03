@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class YamlcppConan(ConanFile):
     name = "yaml-cpp"
-    version = "fail"
+    version = "master"
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Yamlcpp here>"
