@@ -18,7 +18,7 @@ class YamlcppConan(ConanFile):
         cmake = CMake(self)
         if self.options.fPIC:
             cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE:BOOL"] = "ON"
-        cmake.configure(source_dir=self.conanfile_directory + "/yaml-cpp")
+        cmake.configure(source_dir=self.source_folder + "/yaml-cpp")
         cmake.build()
 
     def package(self):
