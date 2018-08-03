@@ -1,7 +1,7 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "yaml-cpp/fail"
+     - CONAN_REFERENCE: "yaml-cpp/master"
      - CONAN_USERNAME: "ebclark2"
      - CONAN_LOGIN_USERNAME: "ebclark2"
      - CONAN_CHANNEL: "stable"
