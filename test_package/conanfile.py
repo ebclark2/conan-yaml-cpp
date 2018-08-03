@@ -6,7 +6,7 @@ channel = os.getenv( 'CONAN_CHANNEL', 'testing' )
 
 class YamlCppTestConan( ConanFile ):
   settings = 'os', 'compiler', 'build_type', 'arch'
-  requires = 'yaml-cpp/master@%s/%s' %  (username, channel )
+  requires = 'yaml-cpp/fail@%s/%s' %  (username, channel )
   build_requires = "cmake_installer/1.0@conan/stable"
   generators = 'cmake'
 
