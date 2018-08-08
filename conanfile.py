@@ -10,7 +10,7 @@ class YamlcppConan(ConanFile):
     build_requires = "cmake_installer/1.0@conan/stable"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = "shared=False", "fPIC=False"
+    default_options = "shared=False", "fPIC=True"
     generators = "cmake"
     exports_sources = "yaml-cpp/*"
 
